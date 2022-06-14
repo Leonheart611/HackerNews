@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Hacker News</string>
+    <string name="top_story_title">Top Stories</string>
+    <string name="story_detail_title">Story Detail</string>
+    <string name="story_detail_desc_title">Deskripsi :</string>
+    <string name="score_text">Score: %1$d</string>
+    <string name="lorem_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </string>
+    <string name="comment_text">Comments</string>
+    <string name="written_by_text">Written by: %1$s</string>
+
 </resources>

@@ -1,6 +1,7 @@
 package com.mikaocto.hackernews.domain.response
 
 import com.mikaocto.hackernews.data.CommentDetail
+import com.mikaocto.hackernews.util.toTime
 
 data class CommentDetailResponse(
     val `by`: String,

@@ -14,8 +14,8 @@ class NewsRepositoryImpl @Inject constructor(private val api: API) : NewsReposit
         val newsId = api.getTopStoryList()
         if (newsId.isSuccessful) {
             newsId.body()?.let {
-                for (id in it) {
-                    val dataResult = api.getStoryDetail(id)
+                for (id in 0..21) {
+                    val dataResult = api.getStoryDetail(it[id])
                     if (dataResult.isSuccessful)
                         dataResult.body()?.let { data -> storyList.add(data.toStoryDetail()) }
                     else throw Exception(dataResult.errorBody().toString())

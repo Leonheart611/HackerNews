@@ -7,13 +7,13 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface API {
-    @GET("/topstories.json")
+    @GET("topstories.json")
     suspend fun getTopStoryList(): Response<List<Int>>
 
-    @GET("/item/{id}.json")
+    @GET("item/{id}.json")
     suspend fun getStoryDetail(@Path("id") id: Int): Response<StoryDetailResponse>
 
-    @GET("/item/{id}.json")
+    @GET("item/{id}.json")
     suspend fun getCommentDetail(@Path("id") id: Int): Response<CommentDetailResponse>
 
 }
