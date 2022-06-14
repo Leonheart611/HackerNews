@@ -51,7 +51,8 @@ class NewsDetailFragment : Fragment() {
                 adapter = commentAdapter
             }
             ivSaveFavorite.setOnClickListener {
-
+                viewModel.saveTitle(tvDetailTitle.text.toString())
+                context?.makeToast("Title Saved")
             }
         }
         viewModel.storyLiveData.observe(viewLifecycleOwner) {

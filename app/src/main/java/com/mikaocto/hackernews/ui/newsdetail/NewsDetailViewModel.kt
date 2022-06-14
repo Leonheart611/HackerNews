@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.mikaocto.hackernews.data.CommentDetail
 import com.mikaocto.hackernews.data.StoryDetail
 import com.mikaocto.hackernews.repository.NewsRepository
+import com.mikaocto.hackernews.ui.MainActivity
 import com.mikaocto.hackernews.util.io
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
@@ -18,7 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class NewsDetailViewModel @Inject constructor(
     val repository: NewsRepository,
-    sharedPreferences: SharedPreferences
+    val sharedPreferences: SharedPreferences
 ) : ViewModel() {
     private val _commentLiveData = MutableLiveData<NewsViewState>()
     val commentLiveData: LiveData<NewsViewState> by lazy { _commentLiveData }
@@ -41,6 +42,12 @@ class NewsDetailViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun saveTitle(title: String) {
+        val editor = sharedPreferences.edit()
+        editor.putString(MainActivity.TITLE_KEY, title)
+        editor.apply()
     }
 
 

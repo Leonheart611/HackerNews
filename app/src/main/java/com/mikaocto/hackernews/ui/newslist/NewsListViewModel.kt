@@ -1,5 +1,6 @@
 package com.mikaocto.hackernews.ui.newslist
 
+import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,7 +15,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NewsListViewModel @Inject constructor(val repository: NewsRepository) : ViewModel() {
+class NewsListViewModel @Inject constructor(
+    val repository: NewsRepository,
+    val sharedPreferences: SharedPreferences
+) : ViewModel() {
     private val _newsLiveData = MutableLiveData<NewsListViewState>()
     val newsLiveData: LiveData<NewsListViewState> by lazy { _newsLiveData }
 

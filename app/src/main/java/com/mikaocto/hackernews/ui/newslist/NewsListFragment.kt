@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mikaocto.hackernews.databinding.FragmentNewsListBinding
+import com.mikaocto.hackernews.ui.MainActivity
 import com.mikaocto.hackernews.ui.adapter.NewsListAdapter
 import com.mikaocto.hackernews.util.makeToast
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,12 +40,14 @@ class NewsListFragment : Fragment(), NewsListAdapter.OnNewsClicklistener {
     }
 
     private fun setupView() {
+        val title = viewModel.sharedPreferences.getString(MainActivity.TITLE_KEY, "") ?: ""
         with(binding) {
             with(rvNewsList) {
                 layoutManager =
                     GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
                 adapter = newsAdapter
             }
+            if (title.isNotEmpty()) tvNewsFavorite.text = title else tvNewsFavorite.isGone = true
         }
         viewModel.newsLiveData.observe(viewLifecycleOwner) {
             when (it) {
