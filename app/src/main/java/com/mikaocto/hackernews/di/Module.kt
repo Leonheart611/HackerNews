@@ -1,6 +1,8 @@
 package com.mikaocto.hackernews.di
 
 import com.mikaocto.hackernews.domain.API
+import com.mikaocto.hackernews.repository.NewsRepository
+import com.mikaocto.hackernews.repository.NewsRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +17,6 @@ import java.util.concurrent.TimeUnit
 @InstallIn(SingletonComponent::class)
 class Module {
     private val baseUrl = "https://hacker-news.firebaseio.com/v0"
-
 
     @Provides
     fun provideApiService(): API {
@@ -39,4 +40,8 @@ class Module {
 
         return retrofit.create(API::class.java)
     }
+
+    @Provides
+    fun provideNewsRepository(api: API): NewsRepository = NewsRepositoryImpl(api)
+
 }
